@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+hi
+<body>
+<ul th:each="user:${users}" th:object="${user}">
+    <!-- ③ -->
+    <li th:text="*{id}"></li>
+    <li th:text="*{name}"></li>
+    <li th:text="*{age}"></li>
+    <li th:text="*{comment}"></li>
+
+</ul>
+
+<h1>User</h1>
+<form th:action="@{/index}" th:method="post">
+    <label class="control-label">名前</label>
+    <input class="form-control" type="text" name="name" />
+
+    <label class="control-label">年齢</label>
+    <input class="form-control" type="number" name="age" />
+
+    <label class="control-label">コメント</label>
+    <input class="form-control" type="text" name="comment" />
+
+    <button class="btn btn-default" type="submit">作成</button>
+</form>
+
+</body>
+</html>
