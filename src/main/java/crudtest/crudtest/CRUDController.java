@@ -3,10 +3,7 @@ package crudtest.crudtest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -31,6 +28,12 @@ public class CRUDController {
     @PostMapping("/index")
     public String create(@ModelAttribute User user){
         repository.save(user);
+        return "redirect:/index";
+    }
+
+    @DeleteMapping("/index/{id}")
+    public String delete(@PathVariable Long id){
+        repository.deleteById(id);
         return "redirect:/index";
     }
 }

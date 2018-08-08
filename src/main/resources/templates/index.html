@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
-hi
+<h1>
 <body>
 <ul th:each="user:${users}" th:object="${user}">
     <!-- ③ -->
@@ -12,6 +12,10 @@ hi
     <li th:text="*{name}"></li>
     <li th:text="*{age}"></li>
     <li th:text="*{comment}"></li>
+
+    <form th:action="@{/index/{id}(id=*{id})}" th:method="delete">
+        <input class="btn btn-default btn-xs" type="submit" value="削除" />
+    </form>
 
 </ul>
 
